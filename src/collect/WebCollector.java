@@ -34,14 +34,22 @@ public class WebCollector {
 				.userAgent(useragent)
 				.get();
 		
-		System.out.println(doc);
 		
-//		Elements es = doc.select("a");
-//		
-//		for(Element e : es) {
-//			String href = e.absUrl("href");
-//			System.out.println(href);
-//		}
+		Elements es = doc.select("li"); 
+		
+		for(Element e : es) {
+			Element h = e.select("div h3 a").first();
+			if(h!=null) {
+				System.out.println(h.text());
+				System.out.println(h.absUrl("href"));
+			}
+			Element p = e.select("span[class=green font14]").first();
+			if(p!=null) {
+				System.out.println(p.text());
+				System.out.println();
+			}
+
+		}
 
 		
 

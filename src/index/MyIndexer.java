@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.analysis.th.ThaiAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -44,12 +46,16 @@ public class MyIndexer {
 		 Directory dir = FSDirectory.open(path);
 		 
 		 /* set analyzer to analyze contents */
-		 Analyzer analyzer=new ThaiAnalyzer();
+		 Analyzer analyzer = new ThaiAnalyzer();
+
+				
 		 
 		 IndexWriterConfig iwc=new IndexWriterConfig(analyzer);
 		 
 		 /* always replace old index */
 		 iwc.setOpenMode(OpenMode.CREATE); 
+		 
+		 
 		 IndexWriter writer = new IndexWriter(dir,iwc);
 		
 		
@@ -61,7 +67,7 @@ public class MyIndexer {
 		 			"https://www.thairath.co.th/lifestyle/tech/review",
 		 			"https://www.thairath.co.th/wongnai",
 		 			"https://www.thairath.co.th/ent",
-				 			
+
 		 					};
 		 
 		 
@@ -82,7 +88,8 @@ public class MyIndexer {
 				 writer.addDocument(d);
 				 
 			 }
-		 }		 
+		 }	
+		 
 		 writer.close();
 	}
 

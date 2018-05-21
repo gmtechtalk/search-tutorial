@@ -20,6 +20,8 @@ public class News {
 	public String publisher;
 	public String category;
 	public Date datetime;
+	
+	
 	public String getTitle() {
 		return title;
 	}

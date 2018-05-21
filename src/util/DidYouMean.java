@@ -36,6 +36,7 @@ public class DidYouMean {
 		try {
 		Path path = FileSystems.getDefault().getPath("index-news");
 		Directory dir = FSDirectory.open(path);
+		
 		sp = new SpellChecker(dir);
 
 		IndexWriterConfig config = new IndexWriterConfig(new ThaiAnalyzer());
